@@ -1,0 +1,2 @@
+# hugokx.github.io
+webstatic
