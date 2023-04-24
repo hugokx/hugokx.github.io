@@ -11,7 +11,7 @@
     };
 
     function loadProjects() {
-        fetch('/files/projets.csv')
+        fetch('/Files/projets.csv')
             .then(response => {
                 if (response.ok) {
                     return response.text();
@@ -37,7 +37,7 @@
             });
     }
     function loadPrestations() {
-        fetch('/files/prestations.csv')
+        fetch('/Files/prestations.csv')
             .then(response => {
                 if (response.ok) {
                     return response.text();
@@ -72,12 +72,14 @@
         const projectSelect = document.getElementById('project');
         const paeProjectInput = document.getElementById('pae_project');
         const prestationSelect = document.getElementById('prestation');
+        const includeCheck = document.getElementById('notInclude');
 
         const projectType = projectSelect.options[projectSelect.selectedIndex].textContent;
         const paeProjectType = paeProjectInput.value;
         const prestationType = prestationSelect.options[prestationSelect.selectedIndex].textContent;
+        const includeValue = includeCheck.value;
 
-        const customReport = `{projet:${projectType};projet_pae:${paeProjectType};prestation:${prestationType}}`;
+        const customReport = `{projet:${projectType};projet_pae:${paeProjectType};prestation:${prestationType};include:${includeValue}`;
         const customText = `---PAS EFFACER---<span style="color: white;">${customReport}</span>--------`;
 
         Office.context.mailbox.item.body.getAsync(Office.CoercionType.Html, (result) => {
@@ -93,10 +95,7 @@
                     if (currentReport === customReport) {
                         showAlertDialog("Les éléments du reporting sont déjà présents");
                     } else {
-                        const [_, projet_tmp, pae_tmp, prestation_tmp] = currentReport.match(/\{projet:(.*?);projet_pae:(.*?);prestation:(.*?)\}/);
-                        console.log(projet_tmp);
-                        console.log(pae_tmp);
-                        console.log(prestation_tmp);
+                        const [_, projet_tmp, pae_tmp, prestation_tmp, include_tmp] = currentReport.match(/\{projet:(.*?);projet_pae:(.*?);prestation:(.*?);include:(.*?)\}/);
                         const dialogContent = `
                                             Un reporting existe déjà avec les éléments suivants :<br>
                                             Projet: ${projet_tmp}<br>
