@@ -87,7 +87,7 @@
                 const currentDescription = result.value;
                 console.log(currentDescription);
                 // const reportRegex = /---PAS EFFACER---<br><span style="color: white;">(.*?)<\/span>--------/;
-                const reportRegex = /-----------------------------------------------------<br><span style="color: white;">([\s\S]*?)<\/span>/;
+                const reportRegex = /-----------------------------------------------------<br?>?<span style="color: white;">([\s\S]*?)<\/span>/;
 
                 if (reportRegex.test(currentDescription)) {
                     const currentReport = reportRegex.exec(currentDescription)[1];
