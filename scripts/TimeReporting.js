@@ -79,7 +79,7 @@
         const prestationType = prestationSelect.options[prestationSelect.selectedIndex].textContent;
         const includeValue = includeCheck.value;
 
-        const customReport = `{projet:${projectType};projet_pae:${paeProjectType};prestation:${prestationType};include:${includeValue}`;
+        const customReport = `{projet:${projectType};projet_pae:${paeProjectType};prestation:${prestationType};inclu:${includeValue}}`;
         const customText = `---PAS EFFACER---<span style="color: white;">${customReport}</span>--------`;
 
         Office.context.mailbox.item.body.getAsync(Office.CoercionType.Html, (result) => {
@@ -95,7 +95,7 @@
                     if (currentReport === customReport) {
                         showAlertDialog("Les éléments du reporting sont déjà présents");
                     } else {
-                        const [_, projet_tmp, pae_tmp, prestation_tmp, include_tmp] = currentReport.match(/\{projet:(.*?);projet_pae:(.*?);prestation:(.*?);include:(.*?)\}/);
+                        const [_, projet_tmp, pae_tmp, prestation_tmp, include_tmp] = currentReport.match(/\{projet:(.*?);projet_pae:(.*?);prestation:(.*?);inclu:(.*?)\}/);
                         const dialogContent = `
                                             Un reporting existe déjà avec les éléments suivants :<br>
                                             Projet: ${projet_tmp}<br>
