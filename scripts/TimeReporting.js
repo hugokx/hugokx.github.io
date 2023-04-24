@@ -11,7 +11,7 @@
     };
 
     function loadProjects() {
-        fetch('/Files/projets.csv')
+        fetch('/files/projets.csv')
             .then(response => {
                 if (response.ok) {
                     return response.text();
@@ -37,7 +37,7 @@
             });
     }
     function loadPrestations() {
-        fetch('/Files/prestations.csv')
+        fetch('/files/prestations.csv')
             .then(response => {
                 if (response.ok) {
                     return response.text();
