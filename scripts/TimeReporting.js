@@ -80,14 +80,14 @@
         const includeValue = includeCheck.value;
 
         const customReport = `{projet:${projectType};projet_pae:${paeProjectType};prestation:${prestationType};inclu:${includeValue}}`;
-        const customText = `---PAS EFFACER---<span style="color: white;">${customReport}</span>--------`;
+        const customText = `-----------------------------------------------------<br><span style="color: white;">${customReport}</span>`;
 
         Office.context.mailbox.item.body.getAsync(Office.CoercionType.Html, (result) => {
             if (result.status === Office.AsyncResultStatus.Succeeded) {
                 const currentDescription = result.value;
                 console.log(currentDescription);
                 // const reportRegex = /---PAS EFFACER---<br><span style="color: white;">(.*?)<\/span>--------/;
-                const reportRegex = /---PAS EFFACER---<span style="color: white;">([\s\S]*?)<\/span>--------/;
+                const reportRegex = /-----------------------------------------------------<br><span style="color: white;">([\s\S]*?)<\/span>/;
 
                 if (reportRegex.test(currentDescription)) {
                     const currentReport = reportRegex.exec(currentDescription)[1];
