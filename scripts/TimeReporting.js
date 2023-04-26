@@ -82,6 +82,11 @@
         return text.replace(/<span class=(['"]?)(?:SpellE|GramE)\1>(.*?)<\/span>/g, '$2');
     }
 
+    function removeSpellCheckTags(htmlString) {
+        const regex = /<span class=(['"])(?:SpellE|GramE)\1>(.*?)<\/span>/g;
+        return htmlString.replace(regex, (match, quote, content) => content);
+    }
+
     function handleSubmit(event) {
         event.preventDefault(); // Prevent the default form submission behavior
 
@@ -108,7 +113,7 @@
                 console.log("---------END OF CURRENT DESCRIPTION---------");
                 const reportRegex = /-----------------------------------------------------\s*<br>\s*<span style="color: white;">([\s\S]*?)<\/span>/;
 
-                currentDescription = removeSpellAndGramTags(currentDescription);
+                currentDescription = removeSpellCheckTags(currentDescription);
                 console.log("---------START OF CURRENT DESCRIPTION WITHOUT GRAMMAR TAG---------");
                 console.log(currentDescription);
                 console.log("---------END OF CURRENT DESCRIPTION WITHOUT GRAMMAR TAG---------");
