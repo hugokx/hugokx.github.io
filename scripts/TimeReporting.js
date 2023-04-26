@@ -77,6 +77,10 @@
           return 'Unknown';
         }
       }
+    
+    function removeSpellAndGramTags(text) {
+      return text.replace(/<span class=(?:SpellE|GramE)>(.*?)<\/span>/g, '$1');
+    }
 
     function handleSubmit(event) {
         event.preventDefault(); // Prevent the default form submission behavior
@@ -102,6 +106,8 @@
                 console.log("---------CURRENT DESCRIPTION---------");
                 console.log(currentDescription);
                 const reportRegex = /([\s\S]*?)-----------------------------------------------------\s*<br>\s*<span style="color: white;">([\s\S]*?)<\/span>/;
+
+                currentDescription = removeSpellAndGramTags(currentDescription);
 
                 if (reportRegex.test(currentDescription)) {
                     const currentReport = reportRegex.exec(currentDescription)[1];
