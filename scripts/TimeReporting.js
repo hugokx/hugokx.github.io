@@ -115,12 +115,8 @@
                         });
                     }
                 } else {
-                    const insertionPoint = '</div></body></html>';
-                    const index = currentDescription.lastIndexOf(insertionPoint);
-                    const updatedDescription = currentDescription.slice(0, index) + '<div>' + customText + '</div>' + currentDescription.slice(index);
-                    console.log("---------UPDATED DESC-----------");
-                    console.log(updatedDescription);
-                    //updateEventDescription(updatedDescription);
+                    const updatedDescription = currentDescription + '<div>' + customText + '</div>';
+                    updateEventDescription(updatedDescription);
                     showAlertDialog("Les éléments ont bien été ajoutés");
                 }
             } else {
