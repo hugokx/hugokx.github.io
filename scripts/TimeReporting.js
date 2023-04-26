@@ -105,7 +105,7 @@
                 const currentDescription = result.value;
                 console.log("---------CURRENT DESCRIPTION---------");
                 console.log(currentDescription);
-                const reportRegex = /([\s\S]*?)-----------------------------------------------------\s*<br>\s*<span style="color: white;">([\s\S]*?)<\/span>/;
+                const reportRegex = /-----------------------------------------------------\s*<br>\s*<span style="color: white;">([\s\S]*?)<\/span>/;
 
                 currentDescription = removeSpellAndGramTags(currentDescription);
 
