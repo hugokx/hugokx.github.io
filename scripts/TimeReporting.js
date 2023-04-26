@@ -102,7 +102,7 @@
 
         Office.context.mailbox.item.body.getAsync(Office.CoercionType.Html, (result) => {
             if (result.status === Office.AsyncResultStatus.Succeeded) {
-                const currentDescription = result.value;
+                let currentDescription = result.value;
                 console.log("---------CURRENT DESCRIPTION---------");
                 console.log(currentDescription);
                 const reportRegex = /-----------------------------------------------------\s*<br>\s*<span style="color: white;">([\s\S]*?)<\/span>/;
