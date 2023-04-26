@@ -120,7 +120,7 @@
                     const updatedDescription = currentDescription.slice(0, index) + '<div>' + customText + '</div>' + currentDescription.slice(index);
                     console.log("---------UPDATED DESC-----------");
                     console.log(updateEventDescription);
-                    updateEventDescription(updatedDescription);
+                    //updateEventDescription(updatedDescription);
                     showAlertDialog("Les éléments ont bien été ajoutés");
                 }
             } else {
