@@ -67,7 +67,6 @@
     }
 
     function handleSubmit(event) {
-        logCalendarDescriptionXml();
         event.preventDefault(); // Prevent the default form submission behavior
 
         const projectSelect = document.getElementById('project');
@@ -115,7 +114,9 @@
                         });
                     }
                 } else {
-                    const updatedDescription = currentDescription + '<div>' + customText + '</div>';
+                    const insertionPoint = '</div></body></html>';
+                    const index = currentDescription.lastIndexOf(insertionPoint);
+                    const updatedDescription = currentDescription.slice(0, index) + '<div>' + customText + '</div>' + currentDescription.slice(index);
                     updateEventDescription(updatedDescription);
                     showAlertDialog("Les éléments ont bien été ajoutés");
                 }
