@@ -103,11 +103,15 @@
         Office.context.mailbox.item.body.getAsync(Office.CoercionType.Html, (result) => {
             if (result.status === Office.AsyncResultStatus.Succeeded) {
                 let currentDescription = result.value;
-                console.log("---------CURRENT DESCRIPTION---------");
+                console.log("---------START OF CURRENT DESCRIPTION---------");
                 console.log(currentDescription);
+                console.log("---------END OF CURRENT DESCRIPTION---------");
                 const reportRegex = /-----------------------------------------------------\s*<br>\s*<span style="color: white;">([\s\S]*?)<\/span>/;
 
                 currentDescription = removeSpellAndGramTags(currentDescription);
+                console.log("---------START OF CURRENT DESCRIPTION WITHOUT GRAMMAR TAG---------");
+                console.log(currentDescription);
+                console.log("---------END OF CURRENT DESCRIPTION WITHOUT GRAMMAR TAG---------");
 
                 if (reportRegex.test(currentDescription)) {
                     const currentReport = reportRegex.exec(currentDescription)[1];
