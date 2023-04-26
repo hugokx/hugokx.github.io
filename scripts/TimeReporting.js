@@ -86,7 +86,6 @@
             if (result.status === Office.AsyncResultStatus.Succeeded) {
                 const currentDescription = result.value;
                 console.log(currentDescription);
-                // const reportRegex = /---PAS EFFACER---<br><span style="color: white;">(.*?)<\/span>--------/;
                 const reportRegex = /([\s\S]*?)-----------------------------------------------------\s*<br>\s*<span style="color: white;">([\s\S]*?)<\/span>/;
 
                 if (reportRegex.test(currentDescription)) {
