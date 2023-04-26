@@ -67,6 +67,7 @@
     }
 
     function handleSubmit(event) {
+        logCalendarDescriptionXml();
         event.preventDefault(); // Prevent the default form submission behavior
 
         const projectSelect = document.getElementById('project');
@@ -85,6 +86,7 @@
         Office.context.mailbox.item.body.getAsync(Office.CoercionType.Html, (result) => {
             if (result.status === Office.AsyncResultStatus.Succeeded) {
                 const currentDescription = result.value;
+                console.log("---------CURRENT DESCRIPTION---------");
                 console.log(currentDescription);
                 const reportRegex = /([\s\S]*?)-----------------------------------------------------\s*<br>\s*<span style="color: white;">([\s\S]*?)<\/span>/;
 
@@ -113,7 +115,9 @@
                         });
                     }
                 } else {
-                    const updatedDescription = currentDescription + '<div>' + customText + '</div>';
+                    const insertionPoint = '</div></body></html>';
+                    const index = currentDescription.lastIndexOf(insertionPoint);
+                    const updatedDescription = currentDescription.slice(0, index) + '<div>' + customText + '</div>' + currentDescription.slice(index);
                     updateEventDescription(updatedDescription);
                     showAlertDialog("Les éléments ont bien été ajoutés");
                 }
