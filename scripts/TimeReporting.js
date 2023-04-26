@@ -66,6 +66,18 @@
             });
     }
 
+    function getOutlookClientType() {
+        const hostName = Office.context.mailbox.diagnostics.hostName;
+      
+        if (hostName === 'Outlook') {
+          return 'Outlook Desktop';
+        } else if (hostName === 'OutlookWebApp') {
+          return 'Outlook Web App';
+        } else {
+          return 'Unknown';
+        }
+      }
+
     function handleSubmit(event) {
         event.preventDefault(); // Prevent the default form submission behavior
 
@@ -81,6 +93,8 @@
 
         const customReport = `{projet:${projectType};projet_pae:${paeProjectType};prestation:${prestationType};inclu:${includeValue}}`;
         const customText = `-----------------------------------------------------<br><span style="color: white;">${customReport}</span>`;
+
+        const clientType = getOutlookClientType();
 
         Office.context.mailbox.item.body.getAsync(Office.CoercionType.Html, (result) => {
             if (result.status === Office.AsyncResultStatus.Succeeded) {
@@ -114,9 +128,18 @@
                         });
                     }
                 } else {
-                    const insertionPoint = '</div></body></html>';
-                    const index = currentDescription.lastIndexOf(insertionPoint);
-                    const updatedDescription = currentDescription.slice(0, index) + '<div>' + customText + '</div>' + currentDescription.slice(index);
+                    let updatedDescription;
+                    
+                    if (clientType === 'Outlook Desktop') {
+                        const insertionPoint = '</div></body></html>';
+                        const index = currentDescription.lastIndexOf(insertionPoint);
+                        updatedDescription = currentDescription.slice(0, index) + '<div>' + customText + '</div>' + currentDescription.slice(index);
+                    } else if (clientType === 'Outlook Web App') {
+                        updatedDescription = currentDescription + '<div>' + customText + '</div>';
+                    } else {
+                        console.error('Unknown client type'); 
+                        return;
+                    }
                     updateEventDescription(updatedDescription);
                     showAlertDialog("Les éléments ont bien été ajoutés");
                 }
