@@ -79,7 +79,7 @@
       }
     
     function removeSpellAndGramTags(text) {
-      return text.replace(/<span class=(?:SpellE|GramE)>(.*?)<\/span>/g, '$1');
+        return text.replace(/<span class=(['"]?)(?:SpellE|GramE)\1>(.*?)<\/span>/g, '$2');
     }
 
     function handleSubmit(event) {
