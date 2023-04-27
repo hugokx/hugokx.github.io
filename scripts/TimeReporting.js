@@ -115,7 +115,7 @@
                 console.log("---------START OF CURRENT DESCRIPTION---------");
                 console.log(currentDescription);
                 console.log("---------END OF CURRENT DESCRIPTION---------");
-                const reportRegex = /-----------------------------------------------------\s*<br>\s*<span style=(?:"|')color:white;?(?:"|')>([\s\S]*?)<\/span>/g;
+                const reportRegex = /-----------------------------------------------------\s*<br>\s*<span style=(?:"|')color:\s?white;?(?:"|')>([\s\S]*?)<\/span>/g;
 
                 currentDescription = removeSpellCheckTags(currentDescription);
                 console.log("---------START OF CURRENT DESCRIPTION WITHOUT GRAMMAR TAG---------");
