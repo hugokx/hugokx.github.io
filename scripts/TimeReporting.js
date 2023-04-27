@@ -105,7 +105,7 @@
         const includeValue = includeCheck.value;
 
         const customReport = `{projet:${projectType};projet_pae:${paeProjectType};prestation:${prestationType};inclu:${includeValue}}`;
-        const customText = `-----------------------------------------------------<br><span style="color:white;?">${customReport}</span>`;
+        const customText = `-----------------------------------------------------<br><span style="color:white;">${customReport}</span>`;
 
         const clientType = getOutlookClientType();
 
@@ -115,7 +115,7 @@
                 console.log("---------START OF CURRENT DESCRIPTION---------");
                 console.log(currentDescription);
                 console.log("---------END OF CURRENT DESCRIPTION---------");
-                const reportRegex = /-----------------------------------------------------\s*<br>\s*<span style=(?:"|')color:white;(?:"|')>([\s\S]*?)<\/span>/g;
+                const reportRegex = /-----------------------------------------------------\s*<br>\s*<span style=(?:"|')color:white;?(?:"|')>([\s\S]*?)<\/span>/g;
 
                 currentDescription = removeSpellCheckTags(currentDescription);
                 console.log("---------START OF CURRENT DESCRIPTION WITHOUT GRAMMAR TAG---------");
