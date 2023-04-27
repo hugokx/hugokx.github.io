@@ -105,7 +105,7 @@
         const includeValue = includeCheck.value;
 
         const customReport = `{projet:${projectType};projet_pae:${paeProjectType};prestation:${prestationType};inclu:${includeValue}}`;
-        const customText = `-----------------------------------------------------<br><span style="color:white;">${customReport}</span>`;
+        const customText = `-----------------------------------------------------<br><span style="color:white;?">${customReport}</span>`;
 
         const clientType = getOutlookClientType();
 
