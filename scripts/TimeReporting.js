@@ -84,11 +84,11 @@
 
     function removeSpellCheckTags(htmlString) {
         const regex = /<span class=(['"])?(?:SpellE|GramE)\1?>(.*?)<\/span>/g;
-        return htmlString.replace(regex, (match, quote, content) => content);
-        console.log('Matched:', match); // logs the full match
-        console.log('Content:', content); // logs the content inside the <span> tag
-        return content;
-
+        return str.replace(regex, (match, quote, content) => {
+            console.log('Matched:', match);
+            console.log('Content:', content);
+            return content;
+          });
     }
 
     function handleSubmit(event) {
