@@ -123,7 +123,8 @@
                 console.log("---------END OF CURRENT DESCRIPTION WITHOUT GRAMMAR TAG---------");
 
                 if (reportRegex.test(currentDescription)) {
-                    const currentReport = reportRegex.exec(currentDescription)[1];
+                    const execRegex = new RegExp(reportRegex);
+                    const currentReport = execRegex.exec(currentDescription)[1];
 
                     if (currentReport === customReport) {
                         showAlertDialog("Les éléments du reporting sont déjà présents");
