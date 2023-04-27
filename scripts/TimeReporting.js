@@ -79,11 +79,11 @@
       }
     
     function removeSpellAndGramTags(text) {
-        return text.replace(/<span class=(['"]?)(?:SpellE|GramE)\1>(.*?)<\/span>/g, '$2');
+        return text.replace(/<span class=(['"]?)(?:SpellE|GramE)\1>(.*?)<\/span>/gm, '$2');
     }
 
     function removeSpellCheckTags(htmlString) {
-        const regex = /<span class=(['"])(?:SpellE|GramE)\1>(.*?)<\/span>/g;
+        const regex = /<span class=(['"])?(?:SpellE|GramE)\1?>(.*?)<\/span>/g;
         return htmlString.replace(regex, (match, quote, content) => content);
     }
 
