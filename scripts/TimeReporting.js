@@ -79,12 +79,16 @@
       }
     
     function removeSpellAndGramTags(text) {
-        return text.replace(/<span class=(['"])?(?:SpellE|GramE)\1?>(.*?)<\/span>/gm, '');
+        return text.replace(/<span class=(['"])?(?:SpellE|GramE)\1?>(.*?)<\/span>/g, '');
     }
 
     function removeSpellCheckTags(htmlString) {
         const regex = /<span class=(['"])?(?:SpellE|GramE)\1?>(.*?)<\/span>/g;
         return htmlString.replace(regex, (match, quote, content) => content);
+        console.log('Matched:', match); // logs the full match
+        console.log('Content:', content); // logs the content inside the <span> tag
+        return content;
+
     }
 
     function handleSubmit(event) {
