@@ -79,7 +79,7 @@
       }
     
     function removeSpellAndGramTags(text) {
-        return text.replace(/<span class=(['"])?(?:SpellE|GramE)\1?>(.*?)<\/span>/gm, '$2');
+        return text.replace(/<span class=(['"])?(?:SpellE|GramE)\1?>(.*?)<\/span>/gm, '');
     }
 
     function removeSpellCheckTags(htmlString) {
