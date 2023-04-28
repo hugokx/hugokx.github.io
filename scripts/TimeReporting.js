@@ -154,9 +154,11 @@
                         const insertionPoint = '</div></body></html>';
                         const alternativeInsertionPoint = /(<body>[\s\S]*?)<!-- Converted from text\/plain format -->([\s\S]*?<\/body>)/i;
                         if (currentDescription.includes(insertionPoint)) {
+                            console.log('----insertPoint-----');
                             const index = currentDescription.lastIndexOf(insertionPoint);
                             updatedDescription = currentDescription.slice(0, index) + '<div>' + customText + '</div>' + currentDescription.slice(index);
                         } else if (alternativeInsertionPoint.test(currentDescription)) {
+                            console.log('----alternativeInsertionPoint-----');
                             updatedDescription = currentDescription.replace(alternativeInsertionPoint, (match, p1, p2) => {
                                 return p1 + '<div>' + customText + '</div>' + p2;
                             });
