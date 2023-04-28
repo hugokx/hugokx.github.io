@@ -112,15 +112,15 @@
         Office.context.mailbox.item.body.getAsync(Office.CoercionType.Html, (result) => {
             if (result.status === Office.AsyncResultStatus.Succeeded) {
                 let currentDescription = result.value;
-                console.log("---------START OF CURRENT DESCRIPTION---------");
-                console.log(currentDescription);
-                console.log("---------END OF CURRENT DESCRIPTION---------");
+                //console.log("---------START OF CURRENT DESCRIPTION---------");
+                //console.log(currentDescription);
+                //console.log("---------END OF CURRENT DESCRIPTION---------");
                 const reportRegex = /-----------------------------------------------------\s*<br>\s*<span style=(?:"|')color:\s?white;?(?:"|')>([\s\S]*?)<\/span>/g;
 
                 currentDescription = removeSpellCheckTags(currentDescription);
-                console.log("---------START OF CURRENT DESCRIPTION WITHOUT GRAMMAR TAG---------");
-                console.log(currentDescription);
-                console.log("---------END OF CURRENT DESCRIPTION WITHOUT GRAMMAR TAG---------");
+                //console.log("---------START OF CURRENT DESCRIPTION WITHOUT GRAMMAR TAG---------");
+                //console.log(currentDescription);
+                //console.log("---------END OF CURRENT DESCRIPTION WITHOUT GRAMMAR TAG---------");
 
                 if (reportRegex.test(currentDescription)) {
                     const execRegex = new RegExp(reportRegex);
@@ -154,15 +154,15 @@
                         const insertionPoint = '</div></body></html>';
                         const alternativeInsertionPoint = /(<body>)[\s\S]*?(<!-- Converted from text\/plain format -->[\s\S]*?)(<\/body>)/i;
                         if (currentDescription.includes(insertionPoint)) {
-                            console.log('----insertPoint-----');
+                            //console.log('----insertPoint-----');
                             const index = currentDescription.lastIndexOf(insertionPoint);
                             updatedDescription = currentDescription.slice(0, index) + '<div>' + customText + '</div>' + currentDescription.slice(index);
                         } else if (alternativeInsertionPoint.test(currentDescription)) {
                             console.log('----alternativeInsertionPoint-----');
                             updatedDescription = currentDescription.replace(alternativeInsertionPoint, `$1<div>${customText}</div>$3`);
-                            console.log('---------START OF UPDATED DESCRIPTION---------');
-                            console.log(updatedDescription);
-                            console.log('---------END OF UPDATED DESCRIPTION---------');
+                            //console.log('---------START OF UPDATED DESCRIPTION---------');
+                            //console.log(updatedDescription);
+                            //console.log('---------END OF UPDATED DESCRIPTION---------');
 
                         } else {
                             console.error('Unsupported content format');
