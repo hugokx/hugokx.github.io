@@ -168,8 +168,6 @@
                             console.error('Unsupported content format');
                             return;
                         }
-                        const index = currentDescription.lastIndexOf(insertionPoint);
-                        updatedDescription = currentDescription.slice(0, index) + '<div>' + customText + '</div>' + currentDescription.slice(index);
                     } else if (clientType === 'Outlook Web App') {
                         updatedDescription = currentDescription + '<div>' + customText + '</div>';
                     } else {
