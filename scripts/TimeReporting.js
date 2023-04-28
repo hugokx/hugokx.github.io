@@ -160,6 +160,10 @@
                         } else if (alternativeInsertionPoint.test(currentDescription)) {
                             console.log('----alternativeInsertionPoint-----');
                             updatedDescription = currentDescription.replace(alternativeInsertionPoint, `$1<div>${customText}</div>$3`);
+                            console.log('---------START OF UPDATED DESCRIPTION---------');
+                            console.log(updatedDescription);
+                            console.log('---------END OF UPDATED DESCRIPTION---------');
+
                         } else {
                             console.error('Unsupported content format');
                             return;
