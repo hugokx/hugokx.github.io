@@ -152,6 +152,16 @@
                     
                     if (clientType === 'Outlook Desktop') {
                         const insertionPoint = '</div></body></html>';
+                        const alternativeInsertionPoint = '<BODY>\n<!-- Converted from text/plain format -->\n\n</BODY>';
+                        if (currentDescription.includes(insertionPoint)) {
+                            const index = currentDescription.lastIndexOf(insertionPoint);
+                            updatedDescription = currentDescription.slice(0, index) + '<div>' + customText + '</div>' + currentDescription.slice(index);
+                        } else if (currentDescription.includes(alternativeInsertionPoint)) {
+                            updatedDescription = currentDescription.replace(alternativeInsertionPoint, '<BODY><div>' + customText + '</div></BODY>');
+                        } else {
+                            console.error('Unsupported content format');
+                            return;
+                        }
                         const index = currentDescription.lastIndexOf(insertionPoint);
                         updatedDescription = currentDescription.slice(0, index) + '<div>' + customText + '</div>' + currentDescription.slice(index);
                     } else if (clientType === 'Outlook Web App') {
