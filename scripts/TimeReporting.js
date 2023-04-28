@@ -152,7 +152,7 @@
                     
                     if (clientType === 'Outlook Desktop') {
                         const insertionPoint = '</div></body></html>';
-                        const alternativeInsertionPoint = /(<body>[\s\S]*?)<!-- Converted from text\/plain format -->([\s\S]*?<\/body>)/i;
+                        const alternativeInsertionPoint = /(<body>[\s\S]*?)<!-- Converted from text\/plain format -->([\s\S]*?)<\/body>/i;
                         if (currentDescription.includes(insertionPoint)) {
                             console.log('----insertPoint-----');
                             const index = currentDescription.lastIndexOf(insertionPoint);
@@ -160,7 +160,7 @@
                         } else if (alternativeInsertionPoint.test(currentDescription)) {
                             console.log('----alternativeInsertionPoint-----');
                             updatedDescription = currentDescription.replace(alternativeInsertionPoint, (match, p1, p2) => {
-                                return p1 + '<div>' + customText + '</div>' + p2;
+                                return p1 + '<div>' + customText + '</div>' + p2 + '</body>';
                             });
                         } else {
                             console.error('Unsupported content format');
