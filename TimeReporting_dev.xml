@@ -91,29 +91,34 @@
               </Group>
             </OfficeTab>
           </ExtensionPoint>
-          <ExtensionPoint xsi:type="EventsModule">
-            <OfficeTab id="TabDefault">
-             <Group id="calendarCmdGroup">
-              <Label resid="CalendarGroupLabel" />
-                <Control xsi:type="Button" id="exportCalendar">
-                  <Label resid="ExportButton.Label" />
-                  <Supertip>
-                    <Title resid="ExportButton.Title" />
-                    <Description resid="ExportButton.Tooltip" />
-                  </Supertip>
-                  <Icon>
-                  <bt:Image size="16" resid="icon16" />
-                  <bt:Image size="32" resid="icon32" />
-                  <bt:Image size="80" resid="icon80" />
-                  </Icon>
-                  <Action xsi:type="ShowTaskpane">
-                    <SourceLocation resid="TR_Export.Url" />
-                  </Action>
-                </Control>
-              </Group>
-            </OfficeTab>
-          </ExtensionPoint>
           <!-- Go to http://aka.ms/ExtensionPointsCommands to learn how to add more Extension Points: MessageRead, AppointmentOrganizer, AppointmentAttendee -->
+        </DesktopFormFactor>
+      </Host>
+      <Host xsi:type="Events">
+        <DesktopFormFactor>
+          <FunctionFile resid="functionFile" />
+            <ExtensionPoint xsi:type="Events">
+              <OfficeTab id="TabDefault">
+                <Group id="calendarCmdGroup">
+                  <Label resid="CalendarGroupLabel" />
+                  <Control xsi:type="Button" id="exportCalendar">
+                    <Label resid="ExportButton.Label" />
+                      <Supertip>
+                        <Title resid="ExportButton.Title" />
+                        <Description resid="ExportButton.Tooltip" />
+                      </Supertip>
+                      <Icon>
+                        <bt:Image size="16" resid="icon16" />
+                        <bt:Image size="32" resid="icon32" />
+                        <bt:Image size="80" resid="icon80" />
+                      </Icon> 
+                      <Action xsi:type="ShowTaskpane">
+                        <SourceLocation resid="TR_Export.Url" />
+                      </Action>
+                    </Control>
+                  </Group>
+              </OfficeTab>
+            </ExtensionPoint>
         </DesktopFormFactor>
       </Host>
     </Hosts>
