@@ -97,28 +97,29 @@
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
           <FunctionFile resid="functionFile" />
-             <ExtensionPoint xsi:type="Module">
-                <RequestedHeight>250</RequestedHeight>
-                <Rule xsi:type="RuleCollection" Mode="And">
-                  <Rule xsi:type="ItemIs" ItemType="Appointment" />
-                </Rule>
-                <Permissions>ReadWriteItem</Permissions>
-                <Control xsi:type="Button" id="exportCalendar">
-                  <Label resid="ExportButton.Label" />
-                  <Supertip>
-                    <Title resid="ExportButton.Title" />
-                    <Description resid="ExportButton.Tooltip" />
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="icon16" />
-                    <bt:Image size="32" resid="icon32" />
-                    <bt:Image size="80" resid="icon80" />
-                  </Icon>
-                  <Action xsi:type="ShowTaskpane">
-                    <SourceLocation resid="TR_Export.Url" />
-                  </Action>
-                </Control>
-              </ExtensionPoint>
+<ExtensionPoint xsi:type="Events">
+  <OfficeTab id="TabDefault">
+    <Group id="calendarCmdGroup">
+      <Label resid="CalendarGroupLabel" />
+      <Control xsi:type="Button" id="exportCalendar">
+        <Label resid="ExportButton.Label" />
+        <Supertip>
+          <Title resid="ExportButton.Title" />
+          <Description resid="ExportButton.Tooltip" />
+        </Supertip>
+        <Icon>
+          <bt:Image size="16" resid="icon16" />
+          <bt:Image size="32" resid="icon32" />
+          <bt:Image size="80" resid="icon80" />
+        </Icon>
+        <Action xsi:type="ShowTaskpane">
+          <SourceLocation resid="TR_Export.Url" />
+        </Action>
+      </Control>
+    </Group>
+  </OfficeTab>
+</ExtensionPoint>
+
         </DesktopFormFactor>
       </Host>
     </Hosts>
