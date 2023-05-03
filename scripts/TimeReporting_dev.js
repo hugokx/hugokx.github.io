@@ -278,7 +278,7 @@
 
         const exportDialog = new bootstrap.Modal(document.getElementById('exportDialog'), {});
         const exportConfirmBtn = document.getElementById('exportConfirmBtn');
-        const exportcancelBtn = document.getElementById('exportCancelBtn');
+        const exportCancelBtn = document.getElementById('exportCancelBtn');
         const infoDate = document.getElementById('infoDate');
 
         exportConfirmBtn.addEventListener('click', function () {
@@ -296,7 +296,7 @@
             }
         });
 
-        exportcancelBtn.addEventListener('click', function () {
+        exportCancelBtn.addEventListener('click', function () {
             onCancel();
             exportDialog.hide();
         });
