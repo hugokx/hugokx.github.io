@@ -94,7 +94,7 @@
           <!-- Go to http://aka.ms/ExtensionPointsCommands to learn how to add more Extension Points: MessageRead, AppointmentOrganizer, AppointmentAttendee -->
         </DesktopFormFactor>
       </Host>
-      <Host xsi:type="Events">
+      <Host xsi:type="MailHost">
         <DesktopFormFactor>
           <FunctionFile resid="functionFile" />
             <ExtensionPoint xsi:type="EventsRest">
