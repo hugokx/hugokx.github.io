@@ -97,7 +97,7 @@
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
           <FunctionFile resid="functionFile" />
-            <ExtensionPoint xsi:type="Events">
+            <ExtensionPoint xsi:type="AppointmentAttendeeCommandSurface">
               <OfficeTab id="TabDefault">
                 <Group id="calendarCmdGroup">
                   <Label resid="CalendarGroupLabel" />
