@@ -10,7 +10,7 @@
   <!-- Begin Basic Settings: Add-in metadata, used for all versions of Office unless override provided. -->
 
   <!-- IMPORTANT! Id must be unique for your add-in, if you reuse this manifest ensure that you change this id to a new GUID. -->
-  <Id>ee299ba2-2e0b-4a58-b39d-e418dfe7c7d9</Id>
+  <Id>ee299ba2-2e0b-4a58-b39d-e418dfe7c7d8</Id>
 
   <!--Version. Updates from the store only get triggered if there is a version change. -->
   <Version>1.0.0.0</Version>
@@ -94,34 +94,6 @@
           <!-- Go to http://aka.ms/ExtensionPointsCommands to learn how to add more Extension Points: MessageRead, AppointmentOrganizer, AppointmentAttendee -->
         </DesktopFormFactor>
       </Host>
-      <Host xsi:type="MailHost">
-        <DesktopFormFactor>
-          <FunctionFile resid="functionFile" />
-<ExtensionPoint xsi:type="Events">
-  <OfficeTab id="TabDefault">
-    <Group id="calendarCmdGroup">
-      <Label resid="CalendarGroupLabel" />
-      <Control xsi:type="Button" id="exportCalendar">
-        <Label resid="ExportButton.Label" />
-        <Supertip>
-          <Title resid="ExportButton.Title" />
-          <Description resid="ExportButton.Tooltip" />
-        </Supertip>
-        <Icon>
-          <bt:Image size="16" resid="icon16" />
-          <bt:Image size="32" resid="icon32" />
-          <bt:Image size="80" resid="icon80" />
-        </Icon>
-        <Action xsi:type="ShowTaskpane">
-          <SourceLocation resid="TR_Export.Url" />
-        </Action>
-      </Control>
-    </Group>
-  </OfficeTab>
-</ExtensionPoint>
-
-        </DesktopFormFactor>
-      </Host>
     </Hosts>
 
     <Resources>
@@ -133,15 +105,11 @@
 		<bt:Urls>
 			<bt:Url id="functionFile" DefaultValue="https://hugokx.github.io/Functions/FunctionFile.html"/>
 			<bt:Url id="TR_Pane.Url" DefaultValue="https://hugokx.github.io/TimeReporting_dev.html"/>
-      <bt:Url id="TR_Export.Url" DefaultValue="https://hugokx.github.io/TR_Export_dev.html"/>
 		</bt:Urls>
 		<bt:ShortStrings>
 			<bt:String id="GroupLabel" DefaultValue="TimeReporting_dev"/>
 			<bt:String id="PaneButton.Label" DefaultValue="TimeReporting_dev"/>
 			<bt:String id="PaneButton.Title" DefaultValue="TimeReporting_dev"/>
-      <bt:String id="CalendarGroupLabel" DefaultValue="TR Export"/>
-      <bt:String id="ExportButton.Label" DefaultValue="TR Export"/>
-      <bt:String id="ExportButton.Title" DefaultValue="TR Export"/>
 		</bt:ShortStrings>
 		<bt:LongStrings>
 			<bt:String id="PaneButton.Tooltip" DefaultValue="Permet de créer et ajouter les éléments nécessaires au time reporting"/>

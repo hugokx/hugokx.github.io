@@ -224,6 +224,10 @@
     }
 
     function handleExport(fromDate, toDate){
+        Office.context.mailbox.item.saveAsync(function(asyncResult) {
+            if (asyncResult.status == Office.AsyncResultStatus.Failed) {
+                console.log("Failed to save item. Error: " + asyncResult.error.message);
+            } else {
         Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function (result) {
             if (result.status === "succeeded") {
                 const accessToken = result.value;
@@ -272,6 +276,8 @@
                 console.error('Problème lors de l\'obtention tu token d\'accès:', result.error);
             }
         });
+        }
+    });
     }
 
     function showExportDialog(event){
