@@ -17,8 +17,8 @@
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
-  <DisplayName DefaultValue="TimeReporting" />
-  <Description DefaultValue="TimeReporting"/>
+  <DisplayName DefaultValue="TimeReporting_dev" />
+  <Description DefaultValue="TimeReporting_dev"/>
   <IconUrl DefaultValue="https://hugokx.github.io/images/icon-64.jpg"/>
 
   <SupportUrl DefaultValue="https://hugokx.github.io" />
@@ -39,7 +39,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://hugokx.github.io/TimeReporting.html"/>
+        <SourceLocation DefaultValue="https://hugokx.github.io/TimeReporting_dev.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -104,12 +104,12 @@
 		</bt:Images>
 		<bt:Urls>
 			<bt:Url id="functionFile" DefaultValue="https://hugokx.github.io/Functions/FunctionFile.html"/>
-			<bt:Url id="TR_Pane.Url" DefaultValue="https://hugokx.github.io/TimeReporting.html"/>
+			<bt:Url id="TR_Pane.Url" DefaultValue="https://hugokx.github.io/TimeReporting_dev.html"/>
 		</bt:Urls>
 		<bt:ShortStrings>
-			<bt:String id="GroupLabel" DefaultValue="TimeReporting"/>
-			<bt:String id="PaneButton.Label" DefaultValue="TimeReporting"/>
-			<bt:String id="PaneButton.Title" DefaultValue="TimeReporting"/>
+			<bt:String id="GroupLabel" DefaultValue="TimeReporting_dev"/>
+			<bt:String id="PaneButton.Label" DefaultValue="TimeReporting_dev"/>
+			<bt:String id="PaneButton.Title" DefaultValue="TimeReporting_dev"/>
 		</bt:ShortStrings>
 		<bt:LongStrings>
 			<bt:String id="PaneButton.Tooltip" DefaultValue="Permet de créer et ajouter les éléments nécessaires au time reporting"/>
