@@ -223,7 +223,7 @@
         alertModal.show();
     }
 
-    function handleExport(fromDate, toDate){
+    function handleExport(startDate, endDate){
         Office.context.mailbox.item.saveAsync(function(asyncResult) {
             if (asyncResult.status == Office.AsyncResultStatus.Failed) {
                 console.log("Failed to save item. Error: " + asyncResult.error.message);
