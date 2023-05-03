@@ -274,7 +274,6 @@
         });
     }
 
-
     function showExportDialog(event){
 
         const exportDialog = new bootstrap.Modal(document.getElementById('exportDialog'), {});
@@ -291,8 +290,9 @@
                 return;
             }
             else{
-            handleExport(fromDate, toDate);
-            exportDialog.hide();
+                infoDate.innerHTML = "";
+                handleExport(fromDate, toDate);
+                exportDialog.hide();
             }
         });
 
