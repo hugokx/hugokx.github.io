@@ -224,58 +224,52 @@
     }
 
     function handleExport(fromDate, toDate){
-        Office.context.mailbox.item.saveAsync(function(asyncResult) {
-            if (asyncResult.status == Office.AsyncResultStatus.Failed) {
-                console.log("Failed to save item. Error: " + asyncResult.error.message);
-            } else {
-                Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function (result) {
-                    if (result.status === "succeeded") {
-                        const accessToken = result.value;
-                        const userEmailAddress = Office.context.mailbox.userProfile.emailAddress;
-                        const [userName, userSurname] = userEmailAddress.split('@')[0].split('.');
-                        const startDateTime = new Date(fromDate).toISOString();
-                        const endDateTime = new Date(toDate).toISOString();
-                        const formattedStartDate = startDate.split("-").reverse().join("_"); // Convert yyyy-mm-dd to dd_mm_yyyy
-                        const formattedEndDate = endDate.split("-").reverse().join("_"); // Convert yyyy-mm-dd to dd_mm_yyyy
+        Office.context.mailbox.getCallbackTokenAsync({ isRest: true }, function (result) {
+            if (result.status === "succeeded") {
+                const accessToken = result.value;
+                const userEmailAddress = Office.context.mailbox.userProfile.emailAddress;
+                const [userName, userSurname] = userEmailAddress.split('@')[0].split('.');
+                const startDateTime = new Date(fromDate).toISOString();
+                const endDateTime = new Date(toDate).toISOString();
+                const formattedStartDate = startDate.split("-").reverse().join("_"); // Convert yyyy-mm-dd to dd_mm_yyyy
+                const formattedEndDate = endDate.split("-").reverse().join("_"); // Convert yyyy-mm-dd to dd_mm_yyyy
 
-                        const url = `https://outlook.office.com/api/v2.0/Users/${userEmailAddress}/CalendarView?startDateTime=${startDateTime}&endDateTime=${endDateTime}`;
+                const url = `https://outlook.office.com/api/v2.0/Users/${userEmailAddress}/CalendarView?startDateTime=${startDateTime}&endDateTime=${endDateTime}`;
 
-                        fetch(url, {
-                            method: 'GET',
-                            headers: {
-                                'Authorization': `Bearer ${accessToken}`,
-                                'Accept': 'application/json; odata.metadata=none',
-                            }
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                const csvData = data.value.map(event => {
-                                    return [
-                                        event.Start.DateTime,
-                                        event.End.DateTime,
-                                        event.Subject,
-                                        event.BodyPreview,
-                                        event.Location ? event.Location.DisplayName : ''
-                                       // Add any other fields you're interested in here.
-                                 ].join(';');
-                                }).join('\n');
-
-                                const blob = new Blob([csvData], { type: 'text/csv' });
-                                const url = URL.createObjectURL(blob);
-                                const link = document.createElement('a');
-                                link.href = url;
-                                link.download = `TR_${userName}_${userSurname}_${formattedStartDate}_${formattedEndDate}.csv`;
-                                document.body.appendChild(link);
-                                link.click();
-                                document.body.removeChild(link);
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                            });
-                    } else {
-                        console.error('Problème lors de l\'obtention tu token d\'accès:', result.error);
+                fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Accept': 'application/json; odata.metadata=none',
                     }
-                });
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        const csvData = data.value.map(event => {
+                            return [
+                                event.Start.DateTime,
+                                event.End.DateTime,
+                                event.Subject,
+                                event.BodyPreview,
+                                event.Location ? event.Location.DisplayName : ''
+                                // Add any other fields you're interested in here.
+                            ].join(';');
+                        }).join('\n');
+
+                        const blob = new Blob([csvData], { type: 'text/csv' });
+                        const url = URL.createObjectURL(blob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.download = `TR_${userName}_${userSurname}_${formattedStartDate}_${formattedEndDate}.csv`;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            } else {
+                console.error('Problème lors de l\'obtention tu token d\'accès:', result.error);
             }
         });
     }
