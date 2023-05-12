@@ -69,10 +69,10 @@
             <!-- Use the default tab of the ExtensionPoint or create your own with <CustomTab id="myTab"> -->
             <OfficeTab id="TabDefault">
               <!-- Up to 6 Groups added per Tab -->
-              <Group id="msgComposeCmdGroup">
+              <Group id="msgComposeCmdGroupOrganizer">
                 <Label resid="GroupLabel" />
                 <!-- Launch the add-in : task pane button -->
-                <Control xsi:type="Button" id="newTimeReport">
+                <Control xsi:type="Button" id="newTimeReportOrganizer">
                   <Label resid="PaneButton.Label" />
                   <Supertip>
                     <Title resid="PaneButton.Title" />
@@ -95,10 +95,10 @@
           <!-- Use the default tab of the ExtensionPoint or create your own with <CustomTab id="myTab"> -->
             <OfficeTab id="TabDefault">
             <!-- Up to 6 Groups added per Tab -->
-            <Group id="msgComposeCmdGroup">
+            <Group id="msgComposeCmdGroupAttendee">
               <Label resid="GroupLabel" />
               <!-- Launch the add-in : task pane button -->
-              <Control xsi:type="Button" id="newTimeReport">
+              <Control xsi:type="Button" id="newTimeReportAttendee">
                 <Label resid="PaneButton.Label" />
                 <Supertip>
                     <Title resid="PaneButton.Title" />
